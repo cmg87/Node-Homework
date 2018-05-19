@@ -1,0 +1,13 @@
+Time: Sat May 19 2018 02:40:07 GMT-0400 (EDT)
+Action: movie-this
+Parameters: Blade,Runner,2049
+Output Result:
+OMBD Search Results...
+Title: Blade Runner 2049
+Year: 2017
+IMDB Rating: 8.1
+Rotten Tomatoes: 87%
+Country Of Origin: USA, UK, Hungary, Canada
+Language: English, Finnish, Japanese, Hungarian, Russian, Somali, Spanish
+Plot: A young blade runner's discovery of a long-buried secret leads him to track down former blade runner Rick Deckard, who's been missing for thirty years.
+Actors: Ryan Gosling, Dave Bautista, Robin Wright, Mark Arnold
