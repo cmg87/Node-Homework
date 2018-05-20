@@ -12,7 +12,7 @@ var action = process.argv[2];
 
 function logger(action, params, log){
 
-    let newlog = `Time: ${d}\nAction: ${action}\nParameters: ${params}\nOutput Result:\n${log}`
+    let newlog = `Time: ${d}\nAction: ${action}\nParameters: ${params}\nOutput Result:\n${log}\n\n------------------------------------------\n\n`
 
     fs.appendFile("log.txt", newlog, function(err) {
 
@@ -42,6 +42,10 @@ function tweet(params){
 }
 
 function music(params){
+    if(process.argv[3] == undefined){
+        params = 'Ace Of Base The Sign';
+        console.log(params);
+    };
     spotify.search({ type: 'track', query: params, limit: 1}, function(err, data) {
         if (err) {
             return console.log('Error occurred: ' + err);
@@ -56,9 +60,15 @@ function music(params){
 
 function omdb(params){
     let movie = params.join('+');
+    let phrase = '';
+    if(process.argv[3] == undefined){
+        movie = 'Mr. Nobody';
+        phrase = "Its on Netflix you should watch it!"
+
+    };
     request('http://www.omdbapi.com/?t='+movie+'&apikey=trilogy', function (error, response, body) {
         let result = JSON.parse(body);
-        let log = (`OMBD Search Results...\nTitle: ${result.Title}\nYear: ${result.Year}\nIMDB Rating: ${result.imdbRating}\nRotten Tomatoes: ${result.Ratings[1].Value}\nCountry Of Origin: ${result.Country}\nLanguage: ${result.Language}\nPlot: ${result.Plot}\nActors: ${result.Actors}`);
+        let log = (`OMBD Search Results...\nTitle: ${result.Title}\nYear: ${result.Year}\nIMDB Rating: ${result.imdbRating}\nRotten Tomatoes: ${result.Ratings[1].Value}\nCountry Of Origin: ${result.Country}\nLanguage: ${result.Language}\nPlot: ${result.Plot}\nActors: ${result.Actors}\n${phrase}`);
         console.log(log);
         logger(action, params, log);
     });
